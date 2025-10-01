@@ -68,7 +68,15 @@
         body {
             font-size: 18px;
         }
-        input[type="number"], select, button {
+
+        /* 고정번호 입력 5칸 한 줄 */
+        #fixed-container input[type="number"] {
+            width: calc(20% - 6px); /* 5칸 한 줄 */
+            margin: 3px;
+            box-sizing: border-box;
+        }
+
+        select, button {
             width: 100%;
             box-sizing: border-box;
             margin: 8px 0;
@@ -81,7 +89,7 @@
 <h2>달새 번호 생성기</h2>
 
 <!-- 고정번호 입력 5개 + 리셋 버튼 -->
-<div>
+<div id="fixed-container">
     고정번호:<br>
     <input type="number" id="fixed1" min="1" max="45">
     <input type="number" id="fixed2" min="1" max="45">
