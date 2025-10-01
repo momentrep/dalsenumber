@@ -17,6 +17,16 @@
         margin-bottom: 20px;
     }
 
+    input[type="number"] {
+        width: 50px;
+        margin: 5px 2px;
+        padding: 8px;
+        font-size: 16px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        text-align: center;
+    }
+
     select {
         width: 60px;
         margin: 5px 2px;
@@ -58,7 +68,7 @@
         body {
             font-size: 18px;
         }
-        select, button {
+        input[type="number"], select, button {
             width: 100%;
             box-sizing: border-box;
             margin: 8px 0;
@@ -70,18 +80,18 @@
 
 <h2>달새 번호 생성기</h2>
 
-<!-- 고정번호 드롭다운 5개 + 리셋 버튼 -->
+<!-- 고정번호 입력 5개 + 리셋 버튼 -->
 <div>
     고정번호:<br>
-    <select id="fixed1"><option value="">--</option></select>
-    <select id="fixed2"><option value="">--</option></select>
-    <select id="fixed3"><option value="">--</option></select>
-    <select id="fixed4"><option value="">--</option></select>
-    <select id="fixed5"><option value="">--</option></select>
+    <input type="number" id="fixed1" min="1" max="45">
+    <input type="number" id="fixed2" min="1" max="45">
+    <input type="number" id="fixed3" min="1" max="45">
+    <input type="number" id="fixed4" min="1" max="45">
+    <input type="number" id="fixed5" min="1" max="45">
     <button onclick="resetFixedNumbers()">리셋</button>
 </div>
 
-<!-- 생성 세트 수 드롭다운 + 버튼 -->
+<!-- 생성 세트 수 드롭다운 1~5 + 버튼 -->
 <div>
     세트 수:
     <select id="numSets">
@@ -90,11 +100,6 @@
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
     </select>
     <button onclick="generateLotto()">생성</button>
     <button onclick="resetResults()">리셋</button>
@@ -104,16 +109,6 @@
 <div id="results"></div>
 
 <script>
-// 고정번호 드롭다운에 1~45 숫자 넣기
-for (let i = 1; i <= 45; i++) {
-    for (let j = 1; j <=5; j++) {
-        const option = document.createElement("option");
-        option.value = i;
-        option.text = i;
-        document.getElementById("fixed"+j).appendChild(option);
-    }
-}
-
 function generateLotto() {
     // 고정번호 중복 제거
     const fixedNumbers = [];
